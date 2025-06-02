@@ -19,13 +19,3 @@ Bahasa Pemograman :
 
 Database :
 1) SQL
-   
-Topoksi Project 
-1)	Tugas Pokok 
-Merencanakan, mengatur seluruh keguatan
-Memastikan project selesai sesuai dengan spesifikasi
-2)	UI/UX Designer 
-Merancang antarmuka pengguna 
-3)	Menulis kode HTML, CSS, JavaScript, Php
-4)	Mengelola database dan server
-5)	Pembuatan desain logo dan gambar

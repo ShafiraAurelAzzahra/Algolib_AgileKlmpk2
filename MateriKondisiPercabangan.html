@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Materi Kondisi Percabangan</title>
+       
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/icon_navigasi.css" rel="stylesheet">
+
+        <link href="css/desain.css" rel="stylesheet">
+
+    </head>
+    
+    <body>
+    
+        <main>
+
+            <section class="homepage" id="homepage">
+                <div class="heroText">
+                    <h1 class="news-detail-title text-white mt-lg-5 mb-lg-4" data-aos="zoom-in" data-aos-delay="300">
+
+                    </h1>
+
+                    <div class="d-flex justify-content-center align-items-center">
+                        <a href="#" class="text-secondary-white-color social-share-link">
+                            <i class="bi-chat-square-fill me-1"></i>                       
+                        </a>
+                        <a href="#" class="social-share-link bi-bookmark-fill ms-3 me-4"></a>                       
+                    </div>
+                </div>
+
+                <div class="videoWrapper">
+                    <img src="Materi.jpg" class="img-fluid news-detail-image" alt="">
+                </div>
+
+                <div class="overlay"></div>
+            </section>
+
+            <nav class="navbar navbar-expand-lg bg-light shadow-lg">
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">
+                        <strong>AlgoLib</strong>
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="index.html#homepage">Home Page</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html#about">About</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html#material">Materi</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html#quiz">Quiz</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html#contact">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <section class="news-detail section-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-10 mx-auto">
+                            <h2 class="mb-3" data-aos="fade-up">Kondisi Percabangan</h2>
+                            <div style="text-align: justify;"> 
+
+                            <div style="text-align: justify;">
+    
+    <p>Pengertian</p>
+    <p>Kondisi percabangan adalah struktur dalam pemrograman yang memungkinkan kode untuk membuat keputusan dan menjalankan bagian kode tertentu berdasarkan kondisi tertentu. Percabangan memungkinkan program untuk beroperasi dengan logika yang lebih kompleks dan dinamis.</p>
+    
+    <p>Fungsi</p>
+    <p>Fungsi utama dari kondisi percabangan adalah untuk:</p>
+    <ul>
+        <li>Menjalankan kode yang berbeda berdasarkan kondisi yang berbeda.</li>
+        <li>Membuat program lebih dinamis dan responsif terhadap input atau keadaan tertentu.</li>
+        <li>Menghindari eksekusi kode yang tidak diperlukan.</li>
+        <li>Meningkatkan fleksibilitas dan kontrol alur eksekusi dalam program.</li>
+    </ul>
+    
+    <p>Jenis-jenis Kondisi Percabangan</p>
+    <p>Terdapat beberapa jenis kondisi percabangan yang umum digunakan dalam pemrograman:</p>
+    <ul>
+        <li><strong>if statement:</strong> Memeriksa suatu kondisi, dan jika kondisi tersebut benar, maka kode di dalam blok if akan dijalankan.</li>
+        <li><strong>if-else statement:</strong> Memeriksa suatu kondisi, dan jika kondisi tersebut benar, maka kode di dalam blok if akan dijalankan; jika salah, maka kode di dalam blok else akan dijalankan.</li>
+        <li><strong>if-else if-else statement:</strong> Memeriksa beberapa kondisi secara berurutan, dan menjalankan blok kode yang sesuai dengan kondisi pertama yang benar.</li>
+        <li><strong>switch statement:</strong> Memilih salah satu dari banyak blok kode untuk dijalankan berdasarkan nilai dari suatu ekspresi. (Tidak semua bahasa pemrograman mendukung switch statement).</li>
+    </ul>
+    
+    <p>Studi Kasus</p>
+    <p><strong>Pengecekan Umur untuk Pemilih</strong></p>
+    <p>Misalkan Anda ingin membuat program sederhana untuk memeriksa apakah seseorang memenuhi syarat untuk memberikan suara dalam suatu pemilihan berdasarkan usia mereka. Dalam contoh ini, kita akan menggunakan kondisi percabangan untuk melakukan pengecekan.</p>
+    
+    <p>Contoh Codingan</p>
+    <p><strong>a. Bahasa C++</strong></p>
+    <div class="example">
+<pre>
+<span class="keyword">#include</span> <span class="string">&lt;iostream&gt;</span><br>
+<span class="keyword">using namespace</span> std;<br><br>
+<span class="keyword">int</span> <span class="function">main</span>() {<br>
+    <span class="type">int</span> usia;<br><br>
+    cout << <span class="string">"Masukkan usia Anda: "</span>;<br>
+    cin >> usia;<br><br>
+    <span class="keyword">if</span> (usia >= <span class="number">17</span>) {<br>
+        cout << <span class="string">"Anda memenuhi syarat untuk memberikan suara."</span> << endl;<br>
+    } <span class="keyword">else</span> {<br>
+        cout << <span class="string">"Anda belum cukup usia untuk memberikan suara. Coba lagi dalam "</span> << <span class="number">17</span> - usia << <span class="string">" tahun."</span> << endl;<br>
+    }<br><br>
+    <span class="keyword">return</span> <span class="number">0</span>;<br>
+}
+</pre>
+    </div>
+    
+    <p><strong>b. Output</strong></p>
+    <p>Dalam studi kasus ini, program meminta pengguna untuk memasukkan usia mereka. Kemudian, dengan menggunakan kondisi percabangan (if dan else), program memeriksa apakah usia tersebut memenuhi syarat untuk memberikan suara. Jika usia mencapai atau melebihi 17 tahun, program akan memberi tahu pengguna bahwa mereka memenuhi syarat. Jika tidak, program akan memberi tahu pengguna bahwa mereka belum cukup usia untuk memberikan suara dan memberikan pesan tentang kapan mereka bisa mencobanya lagi.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/script.js"></script>
+        <script src="js/scroll.js"></script>
+    </body>
+</html>

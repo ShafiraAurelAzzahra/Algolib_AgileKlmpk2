@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Tree</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f4f8;
+        }
+        .container {
+          max-width: 850px; /* Menambahkan max-width */
+          margin: 100px auto; /* Menambahkan margin agar halaman berada di tengah */
+          text-align: center;
+          background-color: #fff;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          border-radius: 15px;
+          padding: 40px;
+        }
+        .title {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #191970;
+        }
+        .question {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: left;
+            color: #34495e;
+        }
+        .options {
+            margin-top: 10px;
+            text-align: left;
+        }
+        .options button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #ecf0f1;
+            transition: background-color 0.3s ease;
+        }
+        .options button:hover {
+            background-color: #bdc3c7;
+        }
+        .selected {
+            background-color: #2ecc71;
+            color: white;
+        }
+        #result {
+            font-size: 1.5em;
+            margin-top: 20px;
+            color: white;
+            background-color: #191970;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        #homeButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #191970;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #homeButton:hover {
+            background-color: #191970;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">Quiz Tree</div>
+        </div>
+        <div id="quiz"></div>
+        <div id="result"></div>
+        <button id="homeButton" style="display:none;" onclick="goHome()">Ke Halaman Beranda</button>
+    </div>
+
+    <script>
+        const questions = [
+    {
+        question: "Apa yang paling tepat mendeskripsikan struktur data tree?",
+        options: [
+            "Struktur data linier dengan akses acak",
+            "Struktur data linier dengan akses sekuensial",
+            "Struktur data hierarkis dengan node root",
+            "Struktur data hierarkis dengan node daun"
+        ],
+        correct: 3
+    },
+    {
+        question: "Apa yang disebut sebagai node paling atas dalam sebuah pohon (tree)?",
+        options: ["Root node", "Leaf node", "Internal node", "Parent node"],
+        correct: 1
+    },
+    {
+        question: "Apa yang dimaksud dengan tingkat (level) dari sebuah node dalam sebuah pohon (tree)?",
+        options: [
+            "Jumlah anak dari node tersebut",
+            "Jarak dari node tersebut ke root node",
+            "Jumlah ancestor dari node tersebut",
+            "Jumlah leaf node dalam subtree node tersebut"
+        ],
+        correct: 2
+    },
+    {
+        question: "Operasi apa yang digunakan untuk menambahkan sebuah node baru ke dalam sebuah pohon (tree)?",
+        options: ["Insert", "Delete", "Traverse", "Search"],
+        correct: 1
+    },
+    {
+        question: "Apa yang dimaksud dengan leaf node dalam sebuah pohon (tree)?",
+        options: [
+            "Node dengan tepat satu anak",
+            "Node yang tidak memiliki anak",
+            "Node dengan dua anak",
+            "Node yang merupakan root node"
+        ],
+        correct: 1
+    },
+    {
+        question: "Apa yang dimaksud dengan binary tree?",
+        options: [
+            "Pohon di mana setiap node memiliki dua anak atau kurang",
+            "Pohon di mana setiap node memiliki tiga anak atau lebih",
+            "Pohon di mana setiap node memiliki tepat satu anak",
+            "Pohon di mana setiap node memiliki lebih dari dua anak"
+        ],
+        correct: 1
+    },
+    {
+        question: "Manakah dari pernyataan berikut yang benar tentang balanced tree?",
+        options: [
+            "Semua leaf node berada di tingkat yang sama",
+            "Setiap node memiliki tepat dua anak",
+            "Jarak dari root node ke leaf node tidak melebihi satu",
+            "Tree memiliki jumlah node yang sama di setiap levelnya"
+        ],
+        correct: 2
+    },
+    {
+        question: "Operasi apa yang digunakan untuk mencari sebuah node dalam sebuah pohon (tree)?",
+        options: ["Insert", "Delete", "Traverse", "Search"],
+        correct: 4
+    },
+    {
+        question: "Apa yang dimaksud dengan pre-order traversal dalam traversal tree?",
+        options: [
+            "Mengunjungi node terlebih dahulu, kemudian anak-anaknya",
+            "Mengunjungi anak-anak node terlebih dahulu, kemudian node itu sendiri",
+            "Mengunjungi node pertama pada setiap tingkat terlebih dahulu",
+            "Mengunjungi node paling bawah terlebih dahulu, kemudian node lainnya"
+        ],
+        correct: 1
+    },
+    {
+        question: "Apa yang dimaksud dengan post-order traversal dalam traversal tree?",
+        options: [
+            "Mengunjungi node terlebih dahulu, kemudian anak-anaknya",
+            "Mengunjungi anak-anak node terlebih dahulu, kemudian node itu sendiri",
+            "Mengunjungi node pertama pada setiap tingkat terlebih dahulu",
+            "Mengunjungi node paling bawah terlebih dahulu, kemudian node lainnya"
+        ],
+        correct: 4
+    }
+];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let selectedAnswers = Array(questions.length).fill(null);
+
+        function loadQuestion() {
+            const quizContainer = document.getElementById('quiz');
+            quizContainer.innerHTML = `
+                <div class="question">${currentQuestion + 1}. ${questions[currentQuestion].question}</div>
+                <div class="options">
+                    ${questions[currentQuestion].options.map((option, index) => `
+                        <button onclick="selectAnswer(${index})" class="${selectedAnswers[currentQuestion] === index ? 'selected' : ''}">${option}</button>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function selectAnswer(selected) {
+            selectedAnswers[currentQuestion] = selected;
+            const buttons = document.querySelectorAll('.options button');
+            buttons.forEach((button, index) => {
+                button.classList.toggle('selected', index === selected);
+            });
+
+            setTimeout(() => {
+                if (currentQuestion < questions.length - 1) {
+                    currentQuestion++;
+                    loadQuestion();
+                } else {
+                    calculateScore();
+                    showResult();
+                }
+            }, 500); // Delay of 0.5 seconds before moving to the next question
+        }
+
+        function calculateScore() {
+            score = selectedAnswers.reduce((total, answer, index) => {
+                return total + (answer === questions[index].correct ? 10 : 0);
+            }, 0);
+        }
+
+        function showResult() {
+            const quizContainer = document.getElementById('quiz');
+            const resultContainer = document.getElementById('result');
+            quizContainer.innerHTML = '';
+            resultContainer.innerHTML = `Nilai akhir Anda: ${score}`;
+            document.getElementById('homeButton').style.display = 'block';
+        }
+
+        function goHome() {
+            window.location.href = 'index.html';
+        }
+
+        loadQuestion();
+    </script>
+</body>
+</html>
